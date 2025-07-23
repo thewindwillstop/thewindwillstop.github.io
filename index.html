@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林坚驰 | 后端开发工程师</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E40AF', // 深蓝主色调
+                        secondary: '#3B82F6',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .transition-custom {
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-bar {
+            transition: width 1s ease-in-out;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 5px;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #1E40AF;
+            border: 3px solid #DBEAFE;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: -21px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #DBEAFE;
+        }
+    </style>
+</head>
+<body class="bg-light text-dark font-inter">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-custom">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary">thewindwillstop</a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="font-medium hover:text-primary transition-custom">Home</a>
+                <a href="#skills" class="font-medium hover:text-primary transition-custom">Skills</a>
+                <a href="#experience" class="font-medium hover:text-primary transition-custom">Experience</a>
+                <a href="#projects" class="font-medium hover:text-primary transition-custom">Projects</a>
+                <a href="#contact" class="font-medium hover:text-primary transition-custom">Contact</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="md:hidden text-dark focus:outline-none">
+                <i class="fa fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="py-2 font-medium hover:text-primary transition-custom">Home</a>
+                <a href="#skills" class="py-2 font-medium hover:text-primary transition-custom">Skills</a>
+                <a href="#experience" class="py-2 font-medium hover:text-primary transition-custom">Experience</a>
+                <a href="#projects" class="py-2 font-medium hover:text-primary transition-custom">Projects</a>
+                <a href="#contact" class="py-2 font-medium hover:text-primary transition-custom">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-blue-50 to-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-shadow mb-6">
+                        林坚驰<br>
+                        <span class="text-primary">后端开发工程师</span>
+                    </h1>
+                    <h2 class="text-[clamp(1.2rem,3vw,1.8rem)] text-gray-600 mb-8">
+                        华东理工大学 (211) | 计算机科学与技术本科
+                    </h2>
+                    <p class="text-gray-700 text-lg mb-8 max-w-lg">
+                        专注于分布式系统与后端架构设计，精通Golang/C++，拥有高并发、高可用系统开发经验，擅长解决分布式一致性与性能优化问题。
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects" class="bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-lg transition-custom shadow-lg hover:shadow-xl">
+                            项目展示
+                        </a>
+                        <a href="https://github.com/thewindwillstop" target="_blank" class="bg-dark hover:bg-dark/90 text-white font-medium px-6 py-3 rounded-lg transition-custom shadow-lg hover:shadow-xl flex items-center gap-2">
+                            <i class="fa fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary shadow-xl">
+                            <img src="https://picsum.photos/id/1076/400/400" alt="林坚驰 profile picture" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-secondary text-white p-4 rounded-lg shadow-lg">
+                            <p class="font-bold">后端开发</p>
+                            <p class="text-sm">分布式系统</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Stats Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="bg-gray-50 rounded-xl shadow-md p-6 md:p-8">
+                <h3 class="text-2xl font-bold mb-6 text-center">技术能力概览</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                        <i class="fa fa-code text-primary text-4xl mb-4"></i>
+                        <h4 class="text-3xl font-bold mb-2">3+</h4>
+                        <p class="text-gray-600">核心项目经验</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                        <i class="fa fa-database text-primary text-4xl mb-4"></i>
+                        <h4 class="text-3xl font-bold mb-2">5+</h4>
+                        <p class="text-gray-600">数据存储技术</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                        <i class="fa fa-trophy text-primary text-4xl mb-4"></i>
+                        <h4 class="text-3xl font-bold mb-2">算法竞赛</h4>
+                        <p class="text-gray-600">省二等奖</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">技术技能</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                    精通后端开发相关技术栈，专注分布式系统与高性能服务架构
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- 编程语言与框架 -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fa fa-code text-primary"></i> 编程语言与框架
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Golang / C++</span>
+                                <span>精通</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-primary h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Gin 框架</span>
+                                <span>精通</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Python (Django)</span>
+                                <span>熟练</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-primary h-2.5 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">协程与并发编程</span>
+                                <span>精通</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 数据存储技术 -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fa fa-database text-primary"></i> 数据存储技术
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">MySQL 架构与优化</span>
+                                <span>精通</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Redis 缓存技术</span>
+                                <span>精通</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">MongoDB / Kafka</span>
+                                <span>熟练</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-primary h-2.5 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 分布式系统 -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fa fa-sitemap text-primary"></i> 分布式系统
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Raft 共识算法</span>
+                                <span>精通</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">分布式事务 (2PC/TCC)</span>
+                                <span>熟练</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-primary h-2.5 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">一致性哈希</span>
+                                <span>熟练</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-primary h-2.5 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 工程工具 -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fa fa-wrench text-primary"></i> 工程工具
+                    </h3>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg flex items-center gap-3">
+                            <i class="fa fa-code-fork text-2xl text-gray-800"></i>
+                            <span>Git / GitHub</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg flex items-center gap-3">
+                            <i class="fa fa-terminal text-2xl text-gray-700"></i>
+                            <span>Linux 命令</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg flex items-center gap-3">
+                            <i class="fa fa-cubes text-2xl text-blue-500"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg flex items-center gap-3">
+                            <i class="fa fa-cloud text-2xl text-blue-400"></i>
+                            <span>Kubernetes</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg flex items-center gap-3">
+                            <i class="fa fa-refresh text-2xl text-gray-600"></i>
+                            <span>Jenkins / CI/CD</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg flex items-center gap-3">
+                            <i class="fa fa-search text-2xl text-purple-400"></i>
+                            <span>Elasticsearch</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
